@@ -1,0 +1,101 @@
+# --- Steps form Cleaned Job Title
+
+1. Separate word compositions:
+re.sub(r"([a-z])([A-Z])", r"\1 \2", value)
+
+2. Replace abbreviations:
+a) re.sub(r"(^|\W)(?i)sr($|\W)", r"\1 senior \2", value) # match sr with surrounding non words or start/end of line, to avoid sr in rsrch for instance.
+b) manually replace in JT that weren't matched
+
+# --- Abbreviations
+
+sr -> senior
+asst -> assistant
+coord -> coordinator
+mgr -> manager
+dir -> director
+IT -> ???
+assoc -> associate
+prog -> program
+spec -> specialist
+supv -> supervisor
+tech -> technician or technology, technical, technologist (Power Control System Tech III / Dir, AE Engineering&Tech Svcs) -> cleaning by hand (très léger, si pas sur je laisse tel quel)
+rep -> representative
+muni -> municipal
+supv -> supervisor
+ntc -> ???
+pr -> professor (3 cases of public relations)
+ops -> operations
+PGL -> ???
+#EMS -> Energy Management System or Emergency Medical Services
+#admin -> administrator or administration or administrative
+lab -> laboratory
+ofc -> office
+pt -> patient
+svc -> service
+sys -> system
+prac -> practitioner, pratice
+med -> medical, medecine
+svcs -> services
+# int -> intern ???
+clin -> clinical
+maint -> maintenance
+exec -> executive
+rsc -> resource
+prgm -> program
+AW -> Austin Water
+serv -> service
+oper -> operator, operation
+vp -> vice president
+# CMC -> chemistry, manufacturing and control
+info -> information
+spc -> specialist ???
+trk -> track
+asc -> associate
+mgmt -> management
+admnstr -> administrative
+HR -> Human Resources
+proj -> project
+wkr -> worker
+dev -> development
+comm -> communications
+div -> division
+spclst -> specialist
+adv -> advanced
+pract -> practice, practitioner
+environ -> environmental
+techn -> technician
+supt -> ??? (superintendent or support)
+
+
+rsrc -> research
+
+# --- Extraneous data
+
+HCPC -> removed
+austin -> ???
+
+-------- Examples --------
+
+AstPr,NTC,AcDnAR,AsDnAdmStdAff
+Hospital Nurse Mgr - HCPC (Extraneous data)
+
+# --- Matching
+
+I -> I-ONE to avoid bad matching
+remove numbers
+
+----------- ERRORS -----------
+
+['Account Assistant' 'Accountant, Assistant'] --- account assistant
+
+
+110, 122, assistant VP
+108, 115, associate dean
+288, 289
+415: ERREUR
+418: ERREUR
+470, 471
+1006, 1007
+
+GOOD EXAMPLE: 836, 877
